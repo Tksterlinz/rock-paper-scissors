@@ -12,13 +12,34 @@ function getComputerChoice(){
 
 function getHumanChoice(){
   const userInput = prompt("Enter your choice(rock, paper or scissors):");
-  if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-    return userInput;
-  } else {
-    alert("Invalid choice. Enter rock, paper or scissors");
-    return getHumanChoice();
-  }
+  return userInput.toLowerCase();
 }
 
 let humanScore = 0;
 let computerScore = 0;
+
+function playRound(humanChoice, computerChoice){
+  const player = humanChoice.toLowerCase();
+
+
+  if (player === computerChoice) {
+    console.log("Its a tie");
+  } else if (player === "rock" && computerChoice === "scissors" ||
+    player === "paper" && computerChoice === "rock" ||
+    player === "scissors" && computerChoice === "paper") 
+  {
+      console.log(`You WIN! ${player} beats ${computerChoice}`);
+      humanScore++;
+  } else {
+    console.log(`You LOSE! ${computerChoice} beats ${player}`);
+    computerScore++;
+  }
+      
+
+  console.log(`Score - You: ${humanScore}, Computer: ${computerScore}`);
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
