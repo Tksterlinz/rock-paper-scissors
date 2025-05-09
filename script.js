@@ -10,4 +10,14 @@ function getComputerChoice(){
   }
 }
 
-console.log(getComputerChoice());
+function getHumanChoice(){
+  const userInput = prompt("Enter your choice(rock, paper or scissors):");
+  if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+    return userInput;
+  } else {
+    alert("Invalid choice. Enter rock, paper or scissors");
+    return getHumanChoice();
+  }
+}
+
+console.log(getHumanChoice());
